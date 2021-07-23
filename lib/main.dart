@@ -24,11 +24,30 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  TextEditingController _textController = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Rx Demo"),
+        title: Text("RxDart Demo"),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              TextField(
+                controller: _textController,
+                decoration: InputDecoration(
+                  hintText: 'Enter something',
+                  border: OutlineInputBorder(),
+                ),
+                onSubmitted: (_textController) => {print(_textController)},
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
