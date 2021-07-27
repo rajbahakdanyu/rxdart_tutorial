@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rxdart_tutorial/screens/reader.dart';
 
 class Launch extends StatefulWidget {
   const Launch({Key? key}) : super(key: key);
@@ -26,7 +27,11 @@ class _LaunchState extends State<Launch> {
               ),
               SizedBox(height: 80.0),
               ElevatedButton(
-                onPressed: () => {},
+                onPressed: () => {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => Reader()),
+                  )
+                },
                 child: Text(
                   'Engage',
                   style: TextStyle(color: Colors.white),
