@@ -20,10 +20,27 @@ class ReaderBloc {
     var contents = await rootBundle.loadString('assets/sonnet.txt');
 
     print(contents);
-    _dartStream.add(contents);
+    _dartStream.sink.add(contents);
     _publishStream.add(contents);
     _behaviorStream.add(contents);
     _replayStream.add(contents);
+
+    // var contents = await File('YOUR SONNET FILE LOCATION')
+    // .openRead()
+    // .transform(utf8.decoder)
+    // .transform(LineSplitter()).toList();
+
+    // for(String l in contents){
+    //   print(l);
+
+    //   //Add Line to Streams
+    //   _dartStream.sink.add(l);
+    //   _publishStream.add(l);
+    //   _behaviorStream.add(l);
+    //   _replayStream.add(l);
+
+    //   await Future.delayed(Duration(milliseconds: 4500));
+    // }
   }
 
   dispose() {
