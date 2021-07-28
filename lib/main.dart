@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'RxDart Tutorial',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
       home: Launch(),
     );
