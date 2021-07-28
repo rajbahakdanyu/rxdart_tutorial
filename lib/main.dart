@@ -5,6 +5,7 @@ import 'package:rxdart_tutorial/blocs/reader_bloc.dart';
 import 'package:rxdart_tutorial/screens/launch.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 

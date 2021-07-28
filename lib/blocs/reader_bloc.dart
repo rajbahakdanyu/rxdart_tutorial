@@ -1,31 +1,35 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:io';
 
+import 'package:flutter/services.dart';
 import 'package:rxdart/subjects.dart';
 
 class ReaderBloc {
   final _dartStream = StreamController<String>();
   final _publishStream = PublishSubject<String>();
-  final _behaviourStream = BehaviorSubject<String>();
-  final _replayStream = ReplaySubject<String>();
+  final _behaviorStream = BehaviorSubject<String>();
+  final _replayStream = ReplaySubject<String>(maxSize: 4);
+
+  // Get
+  Stream<String> get dartStream => _dartStream.stream.asBroadcastStream();
+  Stream<String> get publishStream => _publishStream.stream;
+  Stream<String> get behaviorStream => _behaviorStream.stream;
+  Stream<String> get replayStream =>
+      _replayStream.stream.map((l) => _replayStream.values.join("\n"));
 
   startReading() async {
-    var contents = await File('../../assets/sonnet.txt')
-        .openRead()
-        .transform(utf8.decoder)
-        .transform(LineSplitter())
-        .toList();
+    var contents = await rootBundle.loadString('assets/sonnet.txt');
 
-    for (String l in contents) {
-      print(l);
-    }
+    print(contents);
+    _dartStream.add(contents);
+    _publishStream.add(contents);
+    _behaviorStream.add(contents);
+    _replayStream.add(contents);
   }
 
   dispose() {
     _dartStream.close();
     _publishStream.close();
-    _behaviourStream.close();
+    _behaviorStream.close();
     _replayStream.close();
   }
 }
