@@ -20,24 +20,27 @@ class Reader extends StatelessWidget {
             ],
           ),
         ),
-        body: TabBarView(
-          children: [
-            Scaffold(
-              body: tabBody('Standard Dart Stream Controller.'),
-            ),
-            Scaffold(
-              body: tabBody(
-                  'Exactly like a normal broadcast StreamController with one exception: this class is both a Stream and Sink.'),
-            ),
-            Scaffold(
-              body: tabBody(
-                  'A special StreamController that captures the latest item that has been added to the controller, and emits that as the first item to any new listener.'),
-            ),
-            Scaffold(
-              body: tabBody(
-                  'A special StreamController that captures all of the items that have been added to the controller, and emits those as the first items to any new listener.'),
-            ),
-          ],
+        body: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: TabBarView(
+            children: [
+              Scaffold(
+                body: tabBody('Standard Dart Stream Controller.'),
+              ),
+              Scaffold(
+                body: tabBody(
+                    'Exactly like a normal broadcast StreamController with one exception: this class is both a Stream and Sink.'),
+              ),
+              Scaffold(
+                body: tabBody(
+                    'A special StreamController that captures the latest item that has been added to the controller, and emits that as the first item to any new listener.'),
+              ),
+              Scaffold(
+                body: tabBody(
+                    'A special StreamController that captures all of the items that have been added to the controller, and emits those as the first items to any new listener.'),
+              ),
+            ],
+          ),
         ),
       ),
     );
