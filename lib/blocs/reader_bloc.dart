@@ -8,6 +8,8 @@ class ReaderBloc {
   final _behaviourStream = BehaviorSubject<String>();
   final _replayStream = ReplaySubject<String>();
 
+  startReading() {}
+
   dispose() {
     _dartStream.close();
     _publishStream.close();
